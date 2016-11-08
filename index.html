@@ -11,19 +11,24 @@
     <h1>Planning poker</h1>
 </header>
 
-<div class="main" ng-controller="MainController">
+<div class="main" ng-controller="MainController" role="main">
+    <button class="flip_cards_btn" ng-click="flipCards()">Vänd korten!</button>
+
     <div class="player_section">
         <div class="player_box" ng-repeat="cards in player_attr">
             <div class="cardOnHand" ng-click="pickPlayer($index)">
-                <p> {{ cards.name }} </p>
+                <p>{{ cards.name }}</p>
             </div>
         </div>
     </div>
 
     <div class="cardOnTable_section">
-        <div class="cardOnTable_box" ng-repeat="cards in player_attr">
-            <div class="cardOnTable" ng-click="pickPlayer($index)">
-                <p> {{ cards.card }} </p>
+        <div class="cardOnTable_box effect_click" ng-repeat="cards in player_attr" ng-click="pickPlayer($index)">
+            <div class="cardOnTable_front"  ng-click="pickPlayer($index)">
+                <p>Front</p>
+            </div>
+            <div class="cardOnTable_back">
+                <p>{{ cards.card }}</p>
             </div>
         </div>
     </div>

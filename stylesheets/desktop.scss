@@ -1,7 +1,48 @@
 body {
+  position: relative;
   margin: 0;
   padding: 0;
   width: 100%;
+  font-family: "Gill Sans";
+
+}
+
+.main, .cardOnTable_section, .cardOnTable_box {
+  position: relative;
+}
+
+header {
+
+}
+
+h1 {
+  color: $blue;
+}
+
+button.flip_cards_btn {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  background: $blue;
+  border-radius: 15px;
+  border:none;
+  border-spacing: 0;
+  color: white;
+  font-size: 16px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: normal;
+  list-style: none outside none;
+  margin: 0;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  text-indent: 0;
+  outline: none;
+}
+
+button.flip_cards_btn:active {
+  border-style: outset;
 }
 
 .player_section {
@@ -20,6 +61,8 @@ body {
   height: 100px;
 
   background: orange;
+  text-align: center;
+  border-radius: 5px;
 }
 
 
@@ -33,38 +76,26 @@ body {
 }
 
 .cardOnTable_box {
+  position: relative;
   margin: 10px;
   padding: 5px;
   width: 60px;
   height: 100px;
 
-}
+  text-align: center;  }
 
-.cardOnTable {
-  background: orangered;
-  display: none;
-}
-
-.cardOnTable, .cardOnHand {
+.cardOnHand {
   width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
 }
 
-.show_deck {
-  margin: 10px;
-  padding: 20px;
-  width: 200px;
-
-  background: cornflowerblue;
-}
-
 .pick_card_section {
   width: 100%;
   margin: 0;
   padding: 0;
-  display: flex;
+  //display: flex;
   flex-wrap: wrap;
   flex-direction: row;
 
@@ -78,4 +109,52 @@ body {
   height: 100px;
 
   background: greenyellow;
+  border-radius: 5px;
+
+}
+
+
+// FLIP CARDS ON BUTTON CLICK
+
+.cardOnTable_back, .cardOnTable_front {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transition: -webkit-transform 1s;
+  transition: transform 1s;
+}
+
+.cardOnTable_front {
+  background: indianred;
+}
+
+.cardOnTable_front:hover {
+  background: #a64a4a;
+}
+
+.cardOnTable_back {
+  background-color: #6c6dff;
+  -webkit-transform: rotateY(-180deg);
+  transform: rotateY(-180deg);
+}
+
+.cardOnTable_box.effect_click.flipped .cardOnTable_front {
+  -webkit-transform: rotateY(-180deg);
+  transform: rotateY(-180deg);
+}
+
+
+.cardOnTable_box.effect_click.flipped .cardOnTable_back {
+  -webkit-transform: rotateY(0deg);
+  transform: rotateY(0deg);
+}
+
+.cardOnTable_back, .cardOnTable_front {
+  display: none;
 }
