@@ -2,10 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>PLANNING POKER</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <title>Planning poker</title>
 </head>
 <body ng-app="main-app">
+<header>
+    <h1>Planning poker</h1>
+</header>
 
-<script src="scripts"></script>
+<div class="main" ng-controller="MainController">
+    <div class="player_section">
+        <div class="player_box" ng-repeat="cards in player_attr">
+            <div class="cardOnHand" ng-click="pickPlayer($index)">
+                <p> {{ cards.name }} </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="cardOnTable_section">
+        <div class="cardOnTable_box" ng-repeat="cards in player_attr">
+            <div class="cardOnTable" ng-click="pickPlayer($index)">
+                <p> {{ cards.card }} </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="pick_card_section">
+        <div class="cards_in_deck" ng-repeat="deck_cards in deck">
+            <p ng-click="pickCard()"> {{ deck_cards }} </p>
+        </div>
+    </div>
+
+</div>
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="node_modules/angular/angular.js"></script>
+<script src="scripts/main.js"></script>
+<script src="scripts/MainController.js"></script>
 </body>
 </html>

@@ -1,0 +1,68 @@
+@import url(normalizer.css);
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%; }
+
+.player_section {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row; }
+
+.player_box {
+  margin: 10px;
+  padding: 5px;
+  width: 60px;
+  height: 100px;
+  background: orange; }
+
+.cardOnTable_section {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row; }
+
+.cardOnTable_box {
+  margin: 10px;
+  padding: 5px;
+  width: 60px;
+  height: 100px; }
+
+.cardOnTable {
+  background: orangered;
+  display: none; }
+
+.cardOnTable, .cardOnHand {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0; }
+
+.show_deck {
+  margin: 10px;
+  padding: 20px;
+  width: 200px;
+  background: cornflowerblue; }
+
+.pick_card_section {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  display: none; }
+
+.cards_in_deck {
+  margin: 10px;
+  padding: 10px;
+  width: 60px;
+  height: 100px;
+  background: greenyellow; }
+
+/*# sourceMappingURL=style.css.map */
