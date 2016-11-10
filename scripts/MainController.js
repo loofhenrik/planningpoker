@@ -2,66 +2,89 @@ app.controller("MainController", ['$scope', function($scope) {
 
     var showDeckSection = document.getElementsByClassName("pick_card_section");
     var chosenCardOnTable = document.getElementsByClassName("cardOnTable_box");
+    showDeckSection[0].style.display = "none";
 
     $scope.deck = [0, 1, 2, 3, 5, 8, 13, 20, 40, 100];
     $scope.activeDeck = null;
+    $scope.trueCard = 0;
+
+    $scope.startMsg = true;
+    $scope.flipBtn = false;
+    $scope.newRoundBtn = false;
+
     $scope.player_attr = [
         {
             name: 'Don',
-            card: null
+            card: -1,
+            status: 'Välj Spelare'
         },
         {
             name: 'John',
-            card: null
+            card: -1,
+            status: 'Välj Spelare'
         },
         {
             name: 'Mike',
-            card: null
+            card: -1,
+            status: 'Välj Spelare'
         },
         {
             name: 'Liz',
-            card: null
+            card: -1,
+            status: 'Välj Spelare'
         },
         {
             name: 'Rob',
-            card: null
+            card: -1,
+            status: 'Välj Spelare'
         }
     ];
 
+    // SHOWING THE PLAYERS DECK WHEN CLICKING THE DECK
     $scope.pickPlayer = function (index) {
-        showDeckSection[0].style.display = "flex";
+        $scope.player_attr[index].status = "Välj Kort";
+        $(showDeckSection[0]).slideDown();
         $scope.activeDeck = index;
     };
 
 
+    // CHOOSING A CARD FROM THE PLAYERS DECK AND PUTTING IT ON THE TABLE
     $scope.pickCard = function () {
         $scope.player_attr[$scope.activeDeck].card = this.deck_cards;
-        showDeckSection[0].style.display = "none";
-        console.log(this.deck_cards);
-        $(chosenCardOnTable[$scope.activeDeck]).children().fadeIn();
+        $scope.player_attr[$scope.activeDeck].status = "Väntar...";
+        $(showDeckSection[0]).slideUp();
+        $(chosenCardOnTable[$scope.activeDeck]).children().slideDown();
+        $scope.testFlipBtn();
     };
 
+    // ADDING CLASS .FLIPPED TO PERFORM FLIPPED ANIMATION
     $scope.flipCards = function () {
-        $('.cardOnTable_box').toggleClass("flipped");
+        $('.cardOnTable_box').addClass("flipped");
+        $scope.flipBtn = false;
+        $scope.newRoundBtn = true;
+    };
 
-        /*
-        var flippedClasses = document.getElementsByClassName('flipped');
-        for(var i = 0 ; i < flippedClasses.length ; i++)
-        {
-            var flip = flippedClasses[i];
-            var zeroFlip = flip.classList;
-
-            if(zeroFlip.contains("flipped")){
-                zeroFlip.remove("flipped");
+    $scope.testFlipBtn = function () {
+        for(var i = 0 ; i < $scope.player_attr.length ; i++) {
+            if($scope.player_attr[i].card >= 0) {
+                $scope.trueCard++;
             }
         }
+        if($scope.player_attr.length === $scope.trueCard) {
+            $scope.flipBtn = true;
+            $scope.startMsg = false;
 
-        var f = this.classList;
-        f.add("flipped");
+        }
+        $scope.trueCard = 0;
+    };
 
-        this.addEventListener("click", function(){
-            f.remove("flipped");
-            clickFlip(this);
-        });*/
+    $scope.newRound = function () {
+        $scope.startMsg = true;
+        $scope.newRoundBtn = false;
+        for(var i = 0 ; $scope.player_attr.length ; i++) {
+            $scope.player_attr[i].card = -1;
+            $(chosenCardOnTable[0]).parent().children().children().slideUp();
+            $('.cardOnTable_box').removeClass("flipped");
+        }
     }
 }]);

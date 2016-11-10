@@ -7,25 +7,19 @@
     <title>Planning poker</title>
 </head>
 <body ng-app="main-app">
-<header>
-    <h1>Planning poker</h1>
-</header>
-
 <div class="main" ng-controller="MainController" role="main">
-    <button class="flip_cards_btn" ng-click="flipCards()">Vänd korten!</button>
-
-    <div class="player_section">
-        <div class="player_box" ng-repeat="cards in player_attr">
-            <div class="cardOnHand" ng-click="pickPlayer($index)">
-                <p>{{ cards.name }}</p>
-            </div>
-        </div>
+    <header>
+        <h1>Planning poker</h1>
+    </header>
+    <div>
+        <p class="pick_cards_msg status_btn" ng-show="startMsg">Välj spelare &amp; kort!</p>
+        <button class="flip_cards_btn status_btn" ng-click="flipCards()" ng-show="flipBtn">Vänd korten!</button>
+        <button class="new_round_btn status_btn" ng-click="newRound()" ng-show="newRoundBtn">Ny omgång!</button>
     </div>
 
     <div class="cardOnTable_section">
-        <div class="cardOnTable_box effect_click" ng-repeat="cards in player_attr" ng-click="pickPlayer($index)">
+        <div class="cardOnTable_box effect_click" ng-repeat="cards in player_attr">
             <div class="cardOnTable_front"  ng-click="pickPlayer($index)">
-                <p>Front</p>
             </div>
             <div class="cardOnTable_back">
                 <p>{{ cards.card }}</p>
@@ -33,9 +27,17 @@
         </div>
     </div>
 
+    <div class="player_section">
+        <div class="player_box" ng-repeat="cards in player_attr">
+            <span>{{cards.status}}</span>
+            <div class="cardOnHand" ng-click="pickPlayer($index)">
+            </div>
+            <p>{{ cards.name }}</p>
+        </div>
+    </div>
     <div class="pick_card_section">
-        <div class="cards_in_deck" ng-repeat="deck_cards in deck">
-            <p ng-click="pickCard()"> {{ deck_cards }} </p>
+        <div class="cards_in_deck" ng-repeat="deck_cards in deck" ng-click="pickCard()">
+            <p> {{ deck_cards }} </p>
         </div>
     </div>
 

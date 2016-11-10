@@ -11,18 +11,23 @@ body {
   position: relative;
 }
 
-header {
+.main {
+}
 
+header {
+  padding-left: 30px;
 }
 
 h1 {
   color: $blue;
 }
 
-button.flip_cards_btn {
+
+// BUTTON FOR FLIPPING CARDS WHEN ALL PLAYERS ARE READY
+button.flip_cards_btn, button.new_round_btn, p.pick_cards_msg {
   position: absolute;
-  right: 20px;
-  top: 20px;
+  right: 30px;
+  top: 0px;
   background: $blue;
   border-radius: 15px;
   border:none;
@@ -34,45 +39,86 @@ button.flip_cards_btn {
   font-weight: normal;
   list-style: none outside none;
   margin: 0;
-  padding: 10px 20px;
+  padding: 15px 25px;
   text-align: center;
   text-decoration: none;
   text-indent: 0;
   outline: none;
+  box-shadow: 0 0.5px 1px #333;
+}
+
+p.pick_cards_msg {
+  background: white;
+  color: $blue;
+  border: 2px $blue;
+  box-shadow: inset 0 -0.5px 1px #333;
+  cursor: default;
+}
+
+
+
+button.flip_cards_btn:hover, button.new_round_btn:hover {
+  cursor: pointer;
+  background: #1f94a5;
 }
 
 button.flip_cards_btn:active {
-  border-style: outset;
+  background: $blue;
 }
 
+//
 .player_section {
-  margin: 0;
-  padding: 0;
-  width: 100%;
+  margin: 0 auto;
+  padding: 1% 5%;
+  width: 90%;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+  justify-content: space-around;
+  text-align: center;
+  background: grey;
 }
 
 .player_box {
+  margin: 0;
+  padding: 0;
+}
+
+.player_section span {
+  font-style: italic;
+}
+
+.cardOnHand {
   margin: 10px;
   padding: 5px;
   width: 60px;
   height: 100px;
 
-  background: orange;
+  background: $blue;
   text-align: center;
   border-radius: 5px;
+  border-top: 4px solid #1f94a5;
+  border-right: 4px solid #1f94a5;
+  transition: all 1s ease;
+  box-shadow: 0 0.5px 1px #333;
+
+
 }
 
+.cardOnHand:hover {
+  cursor: pointer;
+  transform: scale(1.04);
+}
 
 .cardOnTable_section {
   margin: 0;
-  padding: 0;
-  width: 100%;
+  padding: 1% 5%;
+  width: 90%;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+  justify-content: space-around;
+  background: darkgrey;
 }
 
 .cardOnTable_box {
@@ -82,24 +128,28 @@ button.flip_cards_btn:active {
   width: 60px;
   height: 100px;
 
-  text-align: center;  }
+  text-align: center;
 
-.cardOnHand {
+}
+
+.cardOnTable_box:hover {
+  cursor: pointer;
+
+}
+
+.pick_card_section {
+  position: fixed;
+  bottom: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
-}
-
-.pick_card_section {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  //display: flex;
+  display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+  justify-content: space-around;
 
-  display: none;
 }
 
 .cards_in_deck {
@@ -108,9 +158,18 @@ button.flip_cards_btn:active {
   width: 60px;
   height: 100px;
 
-  background: greenyellow;
+  background: beige;
   border-radius: 5px;
+  //border: 2px solid $blue;
+  text-align: center;
+  align-self: flex-end;
+  transition: all 1s ease;
+  box-shadow: 0 0.5px 1px #333;
+}
 
+.cards_in_deck:hover {
+  transform: scale(1.04);
+  cursor: pointer;
 }
 
 
@@ -123,6 +182,7 @@ button.flip_cards_btn:active {
   width: 100%;
   height: 100%;
   border-radius: 5px;
+  box-shadow: 0 0.5px 1px #333;
 
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
@@ -131,15 +191,17 @@ button.flip_cards_btn:active {
 }
 
 .cardOnTable_front {
-  background: indianred;
+  background: $blue;
 }
 
 .cardOnTable_front:hover {
-  background: #a64a4a;
+  background: #1f94a5;
 }
 
 .cardOnTable_back {
-  background-color: #6c6dff;
+  background-color: beige;
+
+
   -webkit-transform: rotateY(-180deg);
   transform: rotateY(-180deg);
 }
