@@ -12,29 +12,31 @@ app.controller("MainController", ['$scope', function($scope) {
     $scope.flipBtn = false;
     $scope.newRoundBtn = false;
 
+    $scope.inputName = "";
+
     $scope.player_attr = [
         {
-            name: 'Don',
+            name: '',
             card: -1,
             status: 'Välj Spelare'
         },
         {
-            name: 'John',
+            name: '',
             card: -1,
             status: 'Välj Spelare'
         },
         {
-            name: 'Mike',
+            name: '',
             card: -1,
             status: 'Välj Spelare'
         },
         {
-            name: 'Liz',
+            name: '',
             card: -1,
             status: 'Välj Spelare'
         },
         {
-            name: 'Rob',
+            name: '',
             card: -1,
             status: 'Välj Spelare'
         }
@@ -43,8 +45,15 @@ app.controller("MainController", ['$scope', function($scope) {
     // SHOWING THE PLAYERS DECK WHEN CLICKING THE DECK
     $scope.pickPlayer = function (index) {
         $scope.player_attr[index].status = "Välj Kort";
-        $(showDeckSection[0]).slideDown();
         $scope.activeDeck = index;
+        console.log($scope.player_attr[$scope.activeDeck].name.length);
+        if($scope.player_attr[$scope.activeDeck].name.length == 0) {
+            $('.player_name_form').slideDown();
+            $('#player_name_text').focus();
+        }
+        else {
+            $(showDeckSection[0]).slideDown();
+        }
     };
 
 
@@ -83,8 +92,19 @@ app.controller("MainController", ['$scope', function($scope) {
         $scope.newRoundBtn = false;
         for(var i = 0 ; $scope.player_attr.length ; i++) {
             $scope.player_attr[i].card = -1;
+            $scope.player_attr[i].status = "Välj kort";
             $(chosenCardOnTable[0]).parent().children().children().slideUp();
             $('.cardOnTable_box').removeClass("flipped");
+        }
+    };
+
+    $scope.submitPlayer = function () {
+        if($scope.inputName.length > 0) {
+            $scope.player_attr[$scope.activeDeck].name = $scope.inputName;
+            $scope.inputName = "";
+            $('.player_name_form').slideUp();
+            $(showDeckSection[0]).slideDown();
+
         }
     }
 }]);
