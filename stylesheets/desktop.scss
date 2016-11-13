@@ -4,7 +4,6 @@ body {
   padding: 0;
   width: 100%;
   font-family: "Gill Sans";
-
 }
 
 .main, .cardOnTable_section, .cardOnTable_box {
@@ -21,7 +20,6 @@ header {
 h1 {
   color: $blue;
 }
-
 
 // BUTTON FOR FLIPPING CARDS WHEN ALL PLAYERS ARE READY
 button.flip_cards_btn, button.new_round_btn, p.pick_cards_msg {
@@ -43,18 +41,16 @@ button.flip_cards_btn, button.new_round_btn, p.pick_cards_msg {
   text-decoration: none;
   text-indent: 0;
   outline: none;
-  box-shadow: 0 0.5px 1px #333;
+  box-shadow: 0 0.5px 1px #222;
 }
 
 p.pick_cards_msg {
   background: white;
   color: $blue;
   border: 2px $blue;
-  box-shadow: inset 0 -0.5px 1px #444;
+  box-shadow: inset 0 -0.5px 1px #222;
   cursor: default;
 }
-
-
 
 button.flip_cards_btn:hover, button.new_round_btn:hover {
   cursor: pointer;
@@ -103,9 +99,7 @@ p.player_name {
   border-top: 4px solid #1f94a5;
   border-right: 4px solid #1f94a5;
   transition: all 1s ease;
-  box-shadow: 0 0.5px 1px #333;
-
-
+  box-shadow: 0 0.5px 1px #222;
 }
 
 .cardOnHand:hover {
@@ -152,7 +146,6 @@ p.player_name {
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-around;
-
 }
 
 .cards_in_deck {
@@ -167,7 +160,7 @@ p.player_name {
   text-align: center;
   align-self: flex-end;
   transition: all 1s ease;
-  box-shadow: 0 0.5px 1px #333;
+  box-shadow: 0 0.5px 1px #222;
 }
 
 .cards_in_deck:hover {
@@ -177,7 +170,7 @@ p.player_name {
 
 // PLAYER NAME FORM
 
-.player_name_form {
+.player_name_form, .select_players_form {
   position: fixed;
   bottom: 0;
   left: 0;
@@ -186,11 +179,13 @@ p.player_name {
   height: 100%;
 
   text-align: center;
+}
 
+.player_name_form {
   display: none;
 }
 
-.player_name_form form {
+.player_name_form form, .select_players_form form {
   position: relative;
   top: 30%;
   left: 0;
@@ -200,7 +195,8 @@ p.player_name {
   padding: 25px;
   background: $blue;
   border-radius: 15px;
-  box-shadow: 0 1px 3px #444;
+  box-shadow: 0 1px 3px #222;
+
 }
 
 .player_name_form form input[type=text] {
@@ -230,14 +226,15 @@ p.player_name {
   box-shadow: inset 0 -2px 1px #CCC;
 }
 
-.player_name_form form input[type=submit] {
+.player_name_form form input[type=submit], .select_players_form form input[type=submit] {
   color: white;
-  background: #444;
+  background: #222;
   font-size: 16px;
   text-decoration: none;
   cursor: pointer;
   border:none;
   outline: none;
+  font-weight: bold;
 
   border-radius: 15px;
   -moz-border-radius: 15px;
@@ -247,16 +244,22 @@ p.player_name {
   text-transform: uppercase;
   list-style: none outside none;
   margin: 0;
-  padding: 10px 15px;
+  padding: 10px 20px;
   text-align: center;
   text-indent: 0;
-  //box-shadow: 0 0.5px 1px #333;
   transition: all 0.5s ease;
 }
 
-.player_name_form form input[type=submit]:hover {
-  color: #444;
+.player_name_form form input[type=submit]:hover, .select_players_form form input[type=submit]:hover {
+  color: #222;
   background: white;
+}
+
+.select_players_form select{
+  font-size: 18px;
+  margin: 20px;
+  font-weight: bold;
+  color: #222;
 }
 
 
@@ -269,7 +272,7 @@ p.player_name {
   width: 100%;
   height: 100%;
   border-radius: 5px;
-  box-shadow: 0 0.5px 1px #333;
+  box-shadow: 0 0.5px 1px #222;
 
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
@@ -306,4 +309,8 @@ p.player_name {
 
 .cardOnTable_back, .cardOnTable_front {
   display: none;
+}
+
+h3 {
+  color: #222;
 }

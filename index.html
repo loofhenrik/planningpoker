@@ -11,7 +11,7 @@
     <header>
         <h1>Planning poker</h1>
     </header>
-    <div>
+    <div class="round_status_section">
         <p class="pick_cards_msg status_btn" ng-show="startMsg">Välj spelare &amp; kort!</p>
         <button class="flip_cards_btn status_btn" ng-click="flipCards()" ng-show="flipBtn">Vänd korten!</button>
         <button class="new_round_btn status_btn" ng-click="newRound()" ng-show="newRoundBtn">Ny omgång!</button>
@@ -44,9 +44,19 @@
 
     <div class="player_name_form">
         <form ng-submit="submitPlayer()">
-            <p>Spelarnamn:</p>
+            <h3>Spelarnamn!</h3>
             <input type="text" id="player_name_text" ng-model="inputName" autofocus>
-            <input type="submit" id="submit" value="Submit">
+            <input type="submit" id="submit" value="KÖR!">
+        </form>
+    </div>
+
+    <div class="select_players_form">
+        <form name="numberPlayers">
+            <h3>Välj antal spelare!</h3>
+            <select class="selected_players" ng-model="selectedNumber">
+                <option ng-repeat="num in numberOfPlayers" value="{{num}}">{{num}}</option>
+            </select>
+            <input type="submit" value="KÖR!" ng-click="submitPlayers()">
         </form>
     </div>
 </div>

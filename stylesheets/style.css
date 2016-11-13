@@ -34,13 +34,13 @@ button.flip_cards_btn, button.new_round_btn, p.pick_cards_msg {
   text-decoration: none;
   text-indent: 0;
   outline: none;
-  box-shadow: 0 0.5px 1px #333; }
+  box-shadow: 0 0.5px 1px #222; }
 
 p.pick_cards_msg {
   background: white;
   color: #24a2b5;
   border: 2px #24a2b5;
-  box-shadow: inset 0 -0.5px 1px #444;
+  box-shadow: inset 0 -0.5px 1px #222;
   cursor: default; }
 
 button.flip_cards_btn:hover, button.new_round_btn:hover {
@@ -82,7 +82,7 @@ p.player_name {
   border-top: 4px solid #1f94a5;
   border-right: 4px solid #1f94a5;
   transition: all 1s ease;
-  box-shadow: 0 0.5px 1px #333; }
+  box-shadow: 0 0.5px 1px #222; }
 
 .cardOnHand:hover {
   cursor: pointer;
@@ -132,23 +132,25 @@ p.player_name {
   text-align: center;
   align-self: flex-end;
   transition: all 1s ease;
-  box-shadow: 0 0.5px 1px #333; }
+  box-shadow: 0 0.5px 1px #222; }
 
 .cards_in_deck:hover {
   transform: scale(1.04);
   cursor: pointer; }
 
-.player_name_form {
+.player_name_form, .select_players_form {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
   width: 100%;
   height: 100%;
-  text-align: center;
+  text-align: center; }
+
+.player_name_form {
   display: none; }
 
-.player_name_form form {
+.player_name_form form, .select_players_form form {
   position: relative;
   top: 30%;
   left: 0;
@@ -158,7 +160,7 @@ p.player_name {
   padding: 25px;
   background: #24a2b5;
   border-radius: 15px;
-  box-shadow: 0 1px 3px #444; }
+  box-shadow: 0 1px 3px #222; }
 
 .player_name_form form input[type=text] {
   display: inline;
@@ -184,14 +186,15 @@ p.player_name {
 .player_name_form form input[type=text]:hover {
   box-shadow: inset 0 -2px 1px #CCC; }
 
-.player_name_form form input[type=submit] {
+.player_name_form form input[type=submit], .select_players_form form input[type=submit] {
   color: white;
-  background: #444;
+  background: #222;
   font-size: 16px;
   text-decoration: none;
   cursor: pointer;
   border: none;
   outline: none;
+  font-weight: bold;
   border-radius: 15px;
   -moz-border-radius: 15px;
   -webkit-border-radius: 15px;
@@ -200,14 +203,20 @@ p.player_name {
   text-transform: uppercase;
   list-style: none outside none;
   margin: 0;
-  padding: 10px 15px;
+  padding: 10px 20px;
   text-align: center;
   text-indent: 0;
   transition: all 0.5s ease; }
 
-.player_name_form form input[type=submit]:hover {
-  color: #444;
+.player_name_form form input[type=submit]:hover, .select_players_form form input[type=submit]:hover {
+  color: #222;
   background: white; }
+
+.select_players_form select {
+  font-size: 18px;
+  margin: 20px;
+  font-weight: bold;
+  color: #222; }
 
 .cardOnTable_back, .cardOnTable_front {
   position: absolute;
@@ -216,7 +225,7 @@ p.player_name {
   width: 100%;
   height: 100%;
   border-radius: 5px;
-  box-shadow: 0 0.5px 1px #333;
+  box-shadow: 0 0.5px 1px #222;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   -webkit-transition: -webkit-transform 1s;
@@ -243,5 +252,8 @@ p.player_name {
 
 .cardOnTable_back, .cardOnTable_front {
   display: none; }
+
+h3 {
+  color: #222; }
 
 /*# sourceMappingURL=style.css.map */

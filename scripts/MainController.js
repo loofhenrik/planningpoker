@@ -14,33 +14,22 @@ app.controller("MainController", ['$scope', function($scope) {
 
     $scope.inputName = "";
 
-    $scope.player_attr = [
-        {
-            name: '',
-            card: -1,
-            status: 'Välj Spelare'
-        },
-        {
-            name: '',
-            card: -1,
-            status: 'Välj Spelare'
-        },
-        {
-            name: '',
-            card: -1,
-            status: 'Välj Spelare'
-        },
-        {
-            name: '',
-            card: -1,
-            status: 'Välj Spelare'
-        },
-        {
-            name: '',
-            card: -1,
-            status: 'Välj Spelare'
+    $scope.numberOfPlayers = [1,2,3,4,5,6,7,8];
+    $scope.selectedPlayers = 0;
+    $scope.player_attr = [];
+
+    $scope.submitPlayers = function () {
+        $scope.selectedPlayers = document.getElementsByClassName("selected_players")[0].value;
+
+        for(var i = 0 ; i < $scope.selectedPlayers ; i++) {
+            $scope.player_attr.push({
+                name: '',
+                card: -1,
+                status: 'Välj Spelare'
+            });
         }
-    ];
+        $('.select_players_form').slideUp(800);
+    };
 
     // SHOWING THE PLAYERS DECK WHEN CLICKING THE DECK
     $scope.pickPlayer = function (index) {
@@ -102,8 +91,8 @@ app.controller("MainController", ['$scope', function($scope) {
         if($scope.inputName.length > 0) {
             $scope.player_attr[$scope.activeDeck].name = $scope.inputName;
             $scope.inputName = "";
-            $('.player_name_form').slideUp();
-            $(showDeckSection[0]).slideDown();
+            $('.player_name_form').slideUp(800);
+            $(showDeckSection[0]).slideDown(800);
 
         }
     }
