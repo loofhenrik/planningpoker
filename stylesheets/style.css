@@ -1,259 +1,982 @@
 @import url(normalizer.css);
-body {
-  position: relative;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  font-family: "Gill Sans"; }
+@media only screen and (min-width: 1025px) {
+  body {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: "Gill Sans";
+    background: radial-gradient(#FFF, #999); }
 
-.main, .cardOnTable_section, .cardOnTable_box {
-  position: relative; }
+  .main, .cardOnTable_section, .cardOnTable_box {
+    position: relative; }
 
-header {
-  padding-left: 30px; }
+  .main {
+    height: 100vh; }
 
-h1 {
-  color: #24a2b5; }
+  .gamefield {
+    width: 80%;
+    margin: 0 auto;
+    padding: 0; }
 
-button.flip_cards_btn, button.new_round_btn, p.pick_cards_msg {
-  position: absolute;
-  right: 30px;
-  top: 0px;
-  background: #24a2b5;
-  border-radius: 15px;
-  border: none;
-  border-spacing: 0;
-  color: white;
-  font-size: 16px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  list-style: none outside none;
-  margin: 0;
-  padding: 15px 25px;
-  text-align: center;
-  text-decoration: none;
-  text-indent: 0;
-  outline: none;
-  box-shadow: 0 0.5px 1px #222; }
+  header {
+    margin: 0;
+    width: 95%;
+    height: 150px;
+    padding-left: 5%;
+    padding-top: 1px;
+    transition: all 1s ease;
+    background: linear-gradient(#222, #111);
+    color: white; }
 
-p.pick_cards_msg {
-  background: white;
-  color: #24a2b5;
-  border: 2px #24a2b5;
-  box-shadow: inset 0 -0.5px 1px #222;
-  cursor: default; }
+  h1 {
+    color: #24a2b5;
+    font-family: 'Lobster', cursive;
+    font-size: 36px; }
 
-button.flip_cards_btn:hover, button.new_round_btn:hover {
-  cursor: pointer;
-  background: #1f94a5; }
+  h3 {
+    font-family: 'Lobster', cursive;
+    font-size: 24px;
+    padding: 0 30px; }
 
-button.flip_cards_btn:active {
-  background: #24a2b5; }
+  .subject_print {
+    text-align: left;
+    margin: 0;
+    padding-left: 2%;
+    width: 30%;
+    font-style: italic;
+    text-transform: capitalize; }
 
-.player_section {
-  margin: 0 auto;
-  padding: 1% 5%;
-  width: 90%;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-around;
-  text-align: center;
-  background: grey; }
+  button.flip_cards_btn, button.new_round_btn, p.pick_cards_msg {
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    background: #24a2b5;
+    border-radius: 5px;
+    border: none;
+    border-spacing: 0;
+    color: white;
+    font-size: 16px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    list-style: none outside none;
+    margin: 0;
+    padding: 15px 25px;
+    text-align: center;
+    text-decoration: none;
+    text-indent: 0;
+    outline: none;
+    box-shadow: 0 0.5px 1px #222; }
 
-.player_box {
-  margin: 0;
-  padding: 0; }
+  p.pick_cards_msg {
+    background: white;
+    color: #24a2b5;
+    border: 2px #24a2b5;
+    box-shadow: inset 0 -0.5px 1px #222;
+    cursor: default; }
 
-.player_section span {
-  font-style: italic; }
+  button.flip_cards_btn:hover, button.new_round_btn:hover {
+    cursor: pointer;
+    background: #1f94a5; }
 
-p.player_name {
-  text-transform: uppercase; }
+  button.flip_cards_btn:active {
+    background: #24a2b5; }
 
-.cardOnHand {
-  margin: 10px;
-  padding: 5px;
-  width: 60px;
-  height: 100px;
-  background: #24a2b5;
-  text-align: center;
-  border-radius: 5px;
-  border-top: 4px solid #1f94a5;
-  border-right: 4px solid #1f94a5;
-  transition: all 1s ease;
-  box-shadow: 0 0.5px 1px #222; }
+  .player_section {
+    margin: 0 auto;
+    padding: 1% 5%;
+    width: 90%;
+    display: -webkit-box;
+    /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;
+    /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;
+    /* TWEENER - IE 10 */
+    display: -webkit-flex;
+    /* NEW - Chrome */
+    display: flex;
+    /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    flex-direction: row;
+    -webkit-flex-direction: row;
+    justify-content: space-around;
+    -webkit-justify-content: space-around;
+    text-align: center; }
 
-.cardOnHand:hover {
-  cursor: pointer;
-  transform: scale(1.04); }
+  .player_box {
+    margin: 0;
+    padding: 0; }
 
-.cardOnTable_section {
-  margin: 0;
-  padding: 1% 5%;
-  width: 90%;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-around;
-  background: darkgrey; }
+  .player_section span {
+    font-style: italic; }
 
-.cardOnTable_box {
-  position: relative;
-  margin: 10px;
-  padding: 5px;
-  width: 60px;
-  height: 100px;
-  text-align: center; }
+  p.player_name {
+    text-transform: uppercase; }
 
-.cardOnTable_box:hover {
-  cursor: pointer; }
+  .cardOnHand {
+    margin: 10px;
+    padding: 5px;
+    width: 60px;
+    height: 100px;
+    background: #24a2b5;
+    text-align: center;
+    border-radius: 5px;
+    border-top: 4px solid #1f94a5;
+    border-right: 4px solid #1f94a5;
+    transition: all 1s ease;
+    box-shadow: 0 0.5px 1px #222; }
 
-.pick_card_section {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-around; }
+  .cardOnHand:hover {
+    cursor: pointer;
+    transform: scale(1.04); }
 
-.cards_in_deck {
-  margin: 10px;
-  padding: 10px;
-  width: 60px;
-  height: 100px;
-  background: beige;
-  border-radius: 5px;
-  text-align: center;
-  align-self: flex-end;
-  transition: all 1s ease;
-  box-shadow: 0 0.5px 1px #222; }
+  .cardOnTable_section {
+    margin: 0;
+    padding: 1% 5%;
+    width: 90%;
+    display: -webkit-box;
+    /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;
+    /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;
+    /* TWEENER - IE 10 */
+    display: -webkit-flex;
+    /* NEW - Chrome */
+    display: flex;
+    /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    flex-direction: row;
+    -webkit-flex-direction: row;
+    justify-content: space-around;
+    -webkit-justify-content: space-around; }
 
-.cards_in_deck:hover {
-  transform: scale(1.04);
-  cursor: pointer; }
+  .cardOnTable_box {
+    position: relative;
+    margin: 10px;
+    padding: 5px;
+    width: 60px;
+    height: 100px;
+    text-align: center; }
 
-.player_name_form, .select_players_form {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  text-align: center; }
+  .cardOnTable_box:hover {
+    cursor: pointer; }
 
-.player_name_form {
-  display: none; }
+  .pick_card_section {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: -webkit-box;
+    /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;
+    /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;
+    /* TWEENER - IE 10 */
+    display: -webkit-flex;
+    /* NEW - Chrome */
+    display: flex;
+    /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    flex-direction: row;
+    -webkit-flex-direction: row;
+    justify-content: space-around;
+    -webkit-justify-content: space-around; }
 
-.player_name_form form, .select_players_form form {
-  position: relative;
-  top: 30%;
-  left: 0;
-  right: 0;
-  display: inline-block;
-  margin: 0;
-  padding: 25px;
-  background: #24a2b5;
-  border-radius: 15px;
-  box-shadow: 0 1px 3px #222; }
+  .cards_in_deck {
+    margin: 10px;
+    padding: 10px;
+    width: 60px;
+    height: 100px;
+    background: floralwhite;
+    border-radius: 5px;
+    border: 1px solid #24a2b5;
+    text-align: center;
+    align-self: flex-end;
+    transition: all 1s ease;
+    box-shadow: 0 0.5px 1px #222; }
 
-.player_name_form form input[type=text] {
-  display: inline;
-  color: #24a2b5;
-  background: white;
-  font-size: 14px;
-  text-decoration: none;
-  cursor: pointer;
-  border: none;
-  outline: none;
-  border-radius: 15px;
-  -moz-border-radius: 15px;
-  -webkit-border-radius: 15px;
-  border-spacing: 0;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  list-style: none outside none;
-  margin: 0;
-  padding: 10px 15px;
-  text-align: center;
-  transition: all 0.5s ease; }
+  .cards_in_deck:hover {
+    transform: scale(1.04);
+    cursor: pointer; }
 
-.player_name_form form input[type=text]:hover {
-  box-shadow: inset 0 -2px 1px #CCC; }
+  .player_name_form, .select_players_form, .subject_msg {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center; }
 
-.player_name_form form input[type=submit], .select_players_form form input[type=submit] {
-  color: white;
-  background: #222;
-  font-size: 16px;
-  text-decoration: none;
-  cursor: pointer;
-  border: none;
-  outline: none;
-  font-weight: bold;
-  border-radius: 15px;
-  -moz-border-radius: 15px;
-  -webkit-border-radius: 15px;
-  border-spacing: 0;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  list-style: none outside none;
-  margin: 0;
-  padding: 10px 20px;
-  text-align: center;
-  text-indent: 0;
-  transition: all 0.5s ease; }
+  .player_name_form, .subject_msg {
+    display: none; }
 
-.player_name_form form input[type=submit]:hover, .select_players_form form input[type=submit]:hover {
-  color: #222;
-  background: white; }
+  .player_name_form form, .select_players_form form, .subject_msg form {
+    position: relative;
+    top: 30%;
+    left: 0;
+    right: 0;
+    display: inline-block;
+    margin: 0;
+    padding: 25px;
+    background: #24a2b5;
+    border-radius: 7px;
+    box-shadow: 0 1px 3px #222; }
 
-.select_players_form select {
-  font-size: 18px;
-  margin: 20px;
-  font-weight: bold;
-  color: #222; }
+  .player_name_form form input[type=text] {
+    display: inline;
+    color: #24a2b5;
+    background: white;
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    border-spacing: 0;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    list-style: none outside none;
+    margin: 0;
+    padding: 10px 15px;
+    text-align: center;
+    transition: all 0.5s ease; }
 
-.cardOnTable_back, .cardOnTable_front {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 5px;
-  box-shadow: 0 0.5px 1px #222;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -webkit-transition: -webkit-transform 1s;
-  transition: transform 1s; }
+  .player_name_form form input[type=text]:hover {
+    box-shadow: inset 0 -2px 1px #CCC; }
 
-.cardOnTable_front {
-  background: #24a2b5; }
+  .player_name_form form input[type=submit], .select_players_form form input[type=submit], .subject_msg form input[type=submit] {
+    color: white;
+    background: #222;
+    font-size: 16px;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    font-weight: bold;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-spacing: 0;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    list-style: none outside none;
+    margin: 10px;
+    padding: 10px 20px;
+    text-align: center;
+    text-indent: 0;
+    transition: all 0.5s ease; }
 
-.cardOnTable_front:hover {
-  background: #1f94a5; }
+  .subject_msg form textarea {
+    padding: 10px;
+    width: 250px;
+    height: 100px;
+    border-radius: 5px;
+    outline: none; }
 
-.cardOnTable_back {
-  background-color: beige;
-  -webkit-transform: rotateY(-180deg);
-  transform: rotateY(-180deg); }
+  .player_name_form form input[type=submit]:hover, .select_players_form form input[type=submit]:hover, .subject_msg form input [type=submit]:hover {
+    color: #222;
+    background: white; }
 
-.cardOnTable_box.effect_click.flipped .cardOnTable_front {
-  -webkit-transform: rotateY(-180deg);
-  transform: rotateY(-180deg); }
+  .select_players_form select {
+    font-size: 18px;
+    margin: 20px;
+    font-weight: bold;
+    color: #222; }
 
-.cardOnTable_box.effect_click.flipped .cardOnTable_back {
-  -webkit-transform: rotateY(0deg);
-  transform: rotateY(0deg); }
+  .cardOnTable_back, .cardOnTable_front {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    box-shadow: 0 0.5px 1px #222;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transition: -webkit-transform 1s;
+    transition: transform 1s; }
 
-.cardOnTable_back, .cardOnTable_front {
-  display: none; }
+  .cardOnTable_front {
+    background: #24a2b5; }
 
-h3 {
-  color: #222; }
+  .cardOnTable_front:hover {
+    background: #1f94a5; }
+
+  .cardOnTable_back {
+    background-color: floralwhite;
+    font-family: 'Lobster', cursive;
+    -webkit-transform: rotateY(-180deg);
+    transform: rotateY(-180deg); }
+
+  .cardOnTable_box.effect_click.flipped .cardOnTable_front {
+    -webkit-transform: rotateY(-180deg);
+    transform: rotateY(-180deg); }
+
+  .cardOnTable_box.effect_click.flipped .cardOnTable_back {
+    -webkit-transform: rotateY(0deg);
+    transform: rotateY(0deg); }
+
+  .cardOnTable_back, .cardOnTable_front {
+    display: none; }
+
+  h3 {
+    color: #222; } }
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  body {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: "Gill Sans";
+    background: radial-gradient(#FFF, #999); }
+
+  .main, .cardOnTable_section, .cardOnTable_box {
+    position: relative; }
+
+  .main {
+    height: 100vh; }
+
+  .gamefield {
+    width: 80%;
+    margin: 0 auto;
+    padding: 0; }
+
+  header {
+    margin: 0;
+    width: 95%;
+    height: 150px;
+    padding-left: 5%;
+    padding-top: 1px;
+    transition: all 1s ease;
+    background: linear-gradient(#222, #111);
+    color: white; }
+
+  h1 {
+    color: #24a2b5;
+    font-family: 'Lobster', cursive;
+    font-size: 36px; }
+
+  h3 {
+    font-family: 'Lobster', cursive;
+    font-size: 24px;
+    padding: 0 30px; }
+
+  .subject_print {
+    text-align: left;
+    margin: 0;
+    padding-left: 2%;
+    width: 30%;
+    font-style: italic;
+    text-transform: capitalize; }
+
+  button.flip_cards_btn, button.new_round_btn, p.pick_cards_msg {
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    background: #24a2b5;
+    border-radius: 5px;
+    border: none;
+    border-spacing: 0;
+    color: white;
+    font-size: 16px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    list-style: none outside none;
+    margin: 0;
+    padding: 15px 25px;
+    text-align: center;
+    text-decoration: none;
+    text-indent: 0;
+    outline: none;
+    box-shadow: 0 0.5px 1px #222; }
+
+  p.pick_cards_msg {
+    background: white;
+    color: #24a2b5;
+    border: 2px #24a2b5;
+    box-shadow: inset 0 -0.5px 1px #222;
+    cursor: default; }
+
+  button.flip_cards_btn:hover, button.new_round_btn:hover {
+    cursor: pointer;
+    background: #1f94a5; }
+
+  button.flip_cards_btn:active {
+    background: #24a2b5; }
+
+  .player_section {
+    margin: 0 auto;
+    padding: 1% 5%;
+    width: 90%;
+    display: -webkit-box;
+    /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;
+    /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;
+    /* TWEENER - IE 10 */
+    display: -webkit-flex;
+    /* NEW - Chrome */
+    display: flex;
+    /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    flex-direction: row;
+    -webkit-flex-direction: row;
+    justify-content: space-around;
+    -webkit-justify-content: space-around;
+    text-align: center; }
+
+  .player_box {
+    margin: 0;
+    padding: 0; }
+
+  .player_section span {
+    font-style: italic; }
+
+  p.player_name {
+    text-transform: uppercase; }
+
+  .cardOnHand {
+    margin: 10px;
+    padding: 5px;
+    width: 60px;
+    height: 100px;
+    background: #24a2b5;
+    text-align: center;
+    border-radius: 5px;
+    border-top: 4px solid #1f94a5;
+    border-right: 4px solid #1f94a5;
+    transition: all 1s ease;
+    box-shadow: 0 0.5px 1px #222; }
+
+  .cardOnHand:hover {
+    cursor: pointer;
+    transform: scale(1.04); }
+
+  .cardOnTable_section {
+    margin: 0;
+    padding: 1% 5%;
+    width: 90%;
+    display: -webkit-box;
+    /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;
+    /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;
+    /* TWEENER - IE 10 */
+    display: -webkit-flex;
+    /* NEW - Chrome */
+    display: flex;
+    /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    flex-direction: row;
+    -webkit-flex-direction: row;
+    justify-content: space-around;
+    -webkit-justify-content: space-around; }
+
+  .cardOnTable_box {
+    position: relative;
+    margin: 10px;
+    padding: 5px;
+    width: 60px;
+    height: 100px;
+    text-align: center; }
+
+  .cardOnTable_box:hover {
+    cursor: pointer; }
+
+  .pick_card_section {
+    position: fixed;
+    bottom: 5%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: -webkit-box;
+    /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;
+    /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;
+    /* TWEENER - IE 10 */
+    display: -webkit-flex;
+    /* NEW - Chrome */
+    display: flex;
+    /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    flex-direction: row;
+    -webkit-flex-direction: row;
+    justify-content: space-around;
+    -webkit-justify-content: space-around; }
+
+  .cards_in_deck {
+    margin: 5px;
+    padding: 10px;
+    width: 40px;
+    height: 80px;
+    background: floralwhite;
+    border-radius: 5px;
+    border: 1px solid #24a2b5;
+    text-align: center;
+    align-self: flex-end;
+    transition: all 1s ease;
+    box-shadow: 0 0.5px 1px #222; }
+
+  .cards_in_deck:hover {
+    transform: scale(1.04);
+    cursor: pointer; }
+
+  .player_name_form, .select_players_form, .subject_msg {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center; }
+
+  .player_name_form, .subject_msg {
+    display: none; }
+
+  .player_name_form form, .select_players_form form, .subject_msg form {
+    position: relative;
+    top: 30%;
+    left: 0;
+    right: 0;
+    display: inline-block;
+    margin: 0;
+    padding: 25px;
+    background: #24a2b5;
+    border-radius: 7px;
+    box-shadow: 0 1px 3px #222; }
+
+  .player_name_form form input[type=text] {
+    display: inline;
+    color: #24a2b5;
+    background: white;
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    border-spacing: 0;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    list-style: none outside none;
+    margin: 0;
+    padding: 10px 15px;
+    text-align: center;
+    transition: all 0.5s ease; }
+
+  .player_name_form form input[type=text]:hover {
+    box-shadow: inset 0 -2px 1px #CCC; }
+
+  .player_name_form form input[type=submit], .select_players_form form input[type=submit], .subject_msg form input[type=submit] {
+    color: white;
+    background: #222;
+    font-size: 16px;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    font-weight: bold;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-spacing: 0;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    list-style: none outside none;
+    margin: 10px;
+    padding: 10px 20px;
+    text-align: center;
+    text-indent: 0;
+    transition: all 0.5s ease; }
+
+  .subject_msg form textarea {
+    padding: 10px;
+    width: 250px;
+    height: 100px;
+    border-radius: 5px;
+    outline: none; }
+
+  .player_name_form form input[type=submit]:hover, .select_players_form form input[type=submit]:hover, .subject_msg form input [type=submit]:hover {
+    color: #222;
+    background: white; }
+
+  .select_players_form select {
+    font-size: 18px;
+    margin: 20px;
+    font-weight: bold;
+    color: #222; }
+
+  .cardOnTable_back, .cardOnTable_front {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    box-shadow: 0 0.5px 1px #222;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transition: -webkit-transform 1s;
+    transition: transform 1s; }
+
+  .cardOnTable_front {
+    background: #24a2b5; }
+
+  .cardOnTable_front:hover {
+    background: #1f94a5; }
+
+  .cardOnTable_back {
+    background-color: floralwhite;
+    -webkit-transform: rotateY(-180deg);
+    transform: rotateY(-180deg); }
+
+  .cardOnTable_box.effect_click.flipped .cardOnTable_front {
+    -webkit-transform: rotateY(-180deg);
+    transform: rotateY(-180deg); }
+
+  .cardOnTable_box.effect_click.flipped .cardOnTable_back {
+    -webkit-transform: rotateY(0deg);
+    transform: rotateY(0deg); }
+
+  .cardOnTable_back, .cardOnTable_front {
+    display: none; }
+
+  h3 {
+    color: #222; } }
+@media only screen and (max-width: 767px) {
+  body {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: "Gill Sans";
+    background: linear-gradient(-90deg, #DDD, #BBB); }
+
+  .main, .cardOnTable_section, .cardOnTable_box {
+    position: relative; }
+
+  .main {
+    height: 100vh; }
+
+  header {
+    margin: 0 0 10px 0;
+    width: 100%;
+    height: 200px;
+    padding-top: 1px;
+    transition: all 1s ease;
+    background: linear-gradient(#222, #111);
+    color: white; }
+
+  h1 {
+    color: #24a2b5;
+    font-family: 'Lobster', cursive;
+    font-size: 32px;
+    text-align: center; }
+
+  h3 {
+    font-family: 'Lobster', cursive;
+    font-size: 20px;
+    padding: 0 30px; }
+
+  .subject_print {
+    text-align: left;
+    margin: 2% 10%;
+    width: 80%;
+    font-size: 12px;
+    font-style: italic;
+    text-transform: capitalize;
+    text-align: center; }
+
+  button.flip_cards_btn, button.new_round_btn, p.pick_cards_msg {
+    position: relative;
+    top: 0;
+    left: 0;
+    background: #24a2b5;
+    border-radius: 5px;
+    border: none;
+    border-spacing: 0;
+    color: white;
+    font-size: 16px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    list-style: none outside none;
+    margin: 5px 20px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    text-indent: 0;
+    outline: none;
+    box-shadow: 0 0.5px 1px #222; }
+
+  p.pick_cards_msg {
+    background: white;
+    color: #24a2b5;
+    border: 2px #24a2b5;
+    box-shadow: inset 0 -0.5px 1px #222;
+    cursor: default; }
+
+  button.flip_cards_btn:hover, button.new_round_btn:hover {
+    cursor: pointer;
+    background: #1f94a5; }
+
+  button.flip_cards_btn:active, button.new_round_btn:active {
+    background: #24a2b5; }
+
+  .gamefield {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    display: -webkit-box;
+    /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;
+    /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;
+    /* TWEENER - IE 10 */
+    display: -webkit-flex;
+    /* NEW - Chrome */
+    display: flex;
+    /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-direction: row-reverse;
+    -webkit-flex-direction: row-reverse;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    align-self: stretch;
+    -webkit-align-self: stretch; }
+
+  .player_section {
+    margin: 0 auto;
+    padding: 1% 5%;
+    width: 40%;
+    text-align: center; }
+
+  .player_box {
+    margin: 0;
+    padding: 0;
+    height: 200px; }
+
+  .player_section span {
+    font-style: italic; }
+
+  p.player_name {
+    text-transform: uppercase; }
+
+  .cardOnHand {
+    margin: 5px auto 0 auto;
+    padding: 5px;
+    width: 60px;
+    height: 100px;
+    background: #24a2b5;
+    text-align: center;
+    border-radius: 5px;
+    border-top: 4px solid #1f94a5;
+    border-right: 4px solid #1f94a5;
+    transition: all 1s ease;
+    box-shadow: 0 0.5px 1px #222; }
+
+  .cardOnHand:hover {
+    cursor: pointer;
+    transform: scale(1.04); }
+
+  .cardOnTable_section {
+    margin: 0;
+    padding: 1% 5%;
+    width: 40%; }
+
+  .cardOnTable_box {
+    position: relative;
+    margin: 25px 10px 90px 10px;
+    padding: 5px;
+    width: 60px;
+    height: 100px;
+    text-align: center; }
+
+  .cardOnTable_box:hover {
+    cursor: pointer; }
+
+  .pick_card_section {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    margin: 0;
+    padding: 50% 0 0 0;
+    display: -webkit-box;
+    /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;
+    /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;
+    /* TWEENER - IE 10 */
+    display: -webkit-flex;
+    /* NEW - Chrome */
+    display: flex;
+    /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    flex-direction: row;
+    -webkit-flex-direction: row;
+    align-items: flex-end;
+    -webkit-align-items: flex-end; }
+
+  .cards_in_deck {
+    margin: 5px;
+    padding: 10px;
+    width: 40px;
+    height: 80px;
+    background: floralwhite;
+    border-radius: 5px;
+    border: 1px solid #24a2b5;
+    text-align: center;
+    transition: all 1s ease;
+    box-shadow: 0 0.5px 1px #222; }
+
+  .cards_in_deck:hover {
+    transform: scale(1.04);
+    cursor: pointer; }
+
+  .player_name_form, .select_players_form, .subject_msg {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center; }
+
+  .player_name_form, .subject_msg {
+    display: none; }
+
+  .player_name_form form, .select_players_form form, .subject_msg form {
+    position: relative;
+    top: 25%;
+    left: 0;
+    right: 0;
+    display: inline-block;
+    margin: 0;
+    padding: 25px;
+    background: #24a2b5;
+    border-radius: 7px;
+    box-shadow: 0 1px 3px #222; }
+
+  .player_name_form form input[type=text] {
+    display: inline;
+    color: #24a2b5;
+    background: white;
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    border-spacing: 0;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    list-style: none outside none;
+    margin: 0;
+    padding: 10px 15px;
+    text-align: center;
+    transition: all 0.5s ease; }
+
+  .player_name_form form input[type=text]:hover {
+    box-shadow: inset 0 -2px 1px #CCC; }
+
+  .player_name_form form input[type=submit], .select_players_form form input[type=submit], .subject_msg form input[type=submit] {
+    color: white;
+    background: #222;
+    font-size: 16px;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    font-weight: bold;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-spacing: 0;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    list-style: none outside none;
+    margin: 10px;
+    padding: 10px 20px;
+    text-align: center;
+    text-indent: 0;
+    transition: all 0.5s ease; }
+
+  .subject_msg form textarea {
+    padding: 10px;
+    width: 250px;
+    height: 100px;
+    border-radius: 5px;
+    outline: none; }
+
+  .player_name_form form input[type=submit]:hover, .select_players_form form input[type=submit]:hover, .subject_msg form input [type=submit]:hover {
+    color: #222;
+    background: white; }
+
+  .select_players_form select {
+    font-size: 18px;
+    margin: 20px;
+    font-weight: bold;
+    color: #222; }
+
+  .cardOnTable_back, .cardOnTable_front {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    box-shadow: 0 0.5px 1px #222;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transition: -webkit-transform 1s;
+    transition: transform 1s; }
+
+  .cardOnTable_front {
+    background: #24a2b5; }
+
+  .cardOnTable_front:hover {
+    background: #1f94a5; }
+
+  .cardOnTable_back {
+    background-color: floralwhite;
+    -webkit-transform: rotateY(-180deg);
+    transform: rotateY(-180deg); }
+
+  .cardOnTable_box.effect_click.flipped .cardOnTable_front {
+    -webkit-transform: rotateY(-180deg);
+    transform: rotateY(-180deg); }
+
+  .cardOnTable_box.effect_click.flipped .cardOnTable_back {
+    -webkit-transform: rotateY(0deg);
+    transform: rotateY(0deg); }
+
+  .cardOnTable_back, .cardOnTable_front {
+    display: none; }
+
+  h3 {
+    color: #222; } }
 
 /*# sourceMappingURL=style.css.map */
