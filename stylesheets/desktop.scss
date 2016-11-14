@@ -80,6 +80,7 @@
     box-shadow: 0 0.5px 1px #222;
   }
 
+
   p.pick_cards_msg {
     background: white;
     color: $blue;
@@ -97,7 +98,7 @@
     background: $blue;
   }
 
-  //
+  // SECTION FOR REPRESENTING THE PLAYERS HAND
   .player_section {
     margin: 0 auto;
     padding: 1% 5%;
@@ -149,6 +150,7 @@
     transform: scale(1.04);
   }
 
+  // SECTION FOR CARDS THE PLAYER SELECTED TO PLACE ON TABLE
   .cardOnTable_section {
     margin: 0;
     padding: 1% 5%;
@@ -174,12 +176,10 @@
     height: 100px;
 
     text-align: center;
-
   }
 
   .cardOnTable_box:hover {
     cursor: pointer;
-
   }
 
   .pick_card_section {
@@ -223,7 +223,7 @@
     cursor: pointer;
   }
 
-  // PLAYER NAME FORM
+  // STYLE FOR CHOOSING NAME, NUMBER OF PLAYERS AND SETTING TOPIC
 
   .player_name_form, .select_players_form, .subject_msg {
     position: fixed;
