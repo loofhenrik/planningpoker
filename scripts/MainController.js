@@ -1,3 +1,5 @@
+// USING ANGULAR BECAUSE OF DYNAMICAL PRESENTATION OF CONTENT. 
+
 app.controller("MainController", ['$scope', function($scope) {
 
     var showDeckSection = document.getElementsByClassName("pick_card_section");
