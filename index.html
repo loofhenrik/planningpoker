@@ -2,10 +2,86 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>PLANNING POKER</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <title>Planning Poker</title>
 </head>
 <body ng-app="main-app">
+<div class="main" ng-controller="MainController" role="main">
+    <header>
+        <h1>Planning Poker</h1>
+        <div class="round_status_section">
+            <p class="pick_cards_msg status_btn" ng-show="startMsg">Välj spelare &amp; kort!</p>
+            <button class="flip_cards_btn status_btn" ng-click="flipCards()" ng-show="flipBtn">Vänd korten!</button>
+            <button class="new_round_btn status_btn" ng-click="newRound()" ng-show="newRoundBtn">Ny omgång!</button>
+        </div>
+        <div class="subject_print">
+            <p>{{setMsg}}</p>
+        </div>
 
-<script src="scripts"></script>
+    </header>
+
+    <div class="gamefield">
+        <div class="cardOnTable_section">
+            <div class="cardOnTable_box effect_click" ng-repeat="cards in player_attr">
+                <div class="cardOnTable_front"  ng-click="pickPlayer($index)">
+                </div>
+                <div class="cardOnTable_back">
+                    <p>{{ cards.card }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="player_section">
+            <div class="player_box" ng-repeat="cards in player_attr">
+                <span>{{cards.status}}</span>
+                <div class="cardOnHand" ng-click="pickPlayer($index)">
+                </div>
+                <p class="player_name">{{ cards.name }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="pick_card_section">
+        <div class="cards_in_deck" ng-repeat="deck_cards in deck" ng-click="pickCard()">
+            <p> {{ deck_cards }} </p>
+        </div>
+    </div>
+
+    <div class="player_name_form">
+        <form ng-submit="submitPlayer()">
+            <h3>Spelarnamn!</h3>
+            <input type="text" id="player_name_text" ng-model="inputName" maxlength="10" autofocus>
+            <br>
+            <input type="submit" value="KÖR!">
+        </form>
+    </div>
+
+    <div class="subject_msg">
+        <form ng-submit="submitSubject()">
+            <h3>Välj ämne för diskussion!</h3>
+            <textarea ng-model="setMsg" autofocus maxlength="150"></textarea>
+            <br>
+            <input type="submit" value="KÖR!">
+        </form>
+    </div>
+
+    <div class="select_players_form">
+        <form name="numberPlayers">
+            <h3>Välj antal spelare!</h3>
+            <select class="selected_players" ng-model="selectedNumber">
+                <option ng-repeat="num in numberOfPlayers" value="{{num}}">{{num}}</option>
+            </select>
+            <br>
+            <input type="submit" value="KÖR!" ng-click="submitPlayers()">
+        </form>
+    </div>
+</div>
+
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="node_modules/angular/angular.js"></script>
+<script src="scripts/main.js"></script>
+<script src="scripts/MainController.js"></script>
 </body>
 </html>
